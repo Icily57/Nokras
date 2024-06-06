@@ -1,5 +1,6 @@
-import { defineConfig, Config } from 'drizzle-kit';
-
+import { defineConfig} from 'drizzle-kit';
+import "dotenv/config";
+import {} from "module";
 // export default defineConfig({
 //     schema: './src/schema.ts',
 //     out: './drizzle',
@@ -10,13 +11,10 @@ import { defineConfig, Config } from 'drizzle-kit';
 // } as Config);
 export default defineConfig({
     dialect: "postgresql",  
-    schema: "./src/schema.ts",
+    schema: "./src/drizzle/schema.ts",
     out: "./src/drizzle/migrations",
     dbCredentials: {
-                host: 'localhost',
-                user: 'postgres',
-                password: '39047646',
-                database: 'Nokras',
+                url: process.env.DATABASE_URL as string,
             },
    
     verbose: true,
